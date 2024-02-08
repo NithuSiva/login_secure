@@ -19,7 +19,7 @@ Réalisation d'une page de login sécurisé avec le framework Angular.
   : - npm run server
 
 # Base de données
-J'ai utilisé un JSON pour ma base de données, la base est vide.
+Utilisation d'un fichier JSON pour la base de données, la base est vide.
 # Fonctionnement
 La page est constitué de deux champs de texte "Identifiant" et "Mots de passe" et trois bouttons.
 - Le premier bouton permet de remettre à zéro les deux champs de texte.
@@ -27,7 +27,7 @@ La page est constitué de deux champs de texte "Identifiant" et "Mots de passe" 
 - Le troisième bouton permet d'ajouter l'identifiant et le mot de passe à la base de données.
 
 # Sécurité
-J'ai d'abord ajouté un regex pour les "mots de passe" afin d'avoir un mdp robuste.
+Ajout d'un regex pour les "mots de passe" afin d'avoir un mdp robuste.
 
 Regex 
 
