@@ -1,0 +1,27 @@
+<div class="formulaire">
+    
+  <h2 class="formulaire_titre">Formulaire</h2>
+  
+
+  <form [formGroup]="formLogin">
+
+    <div class="div_identifiant">
+      <p class="p_identifiant">Identifiant</p>
+      <input id="input_identifiant" type="text" placeholder="John" required [(ngModel)]="input_identifiant" [formControlName]="'identifiant'">
+    </div>
+  
+    <div class="div_mdp">
+      <p class="p_mdp">Mots de passe</p>
+      <input id="input_mdp"  type="password" [(ngModel)]="input_mdp" required [formControlName]="'mdp'">
+    </div>
+
+    <div class="boutton_div">
+      <button class="boutton_reset" id="boutton_reset" type="submit" (click)="reset()"  >Reset</button>
+      <button class="boutton_valider" id="boutton_valider" type="submit" (click)="valider()"  >Valider</button>
+      <button class="boutton_ajout" id="boutton_ajout" type="submit" (click)="ajout()"  >Ajout</button>
+
+    </div>
+
+  </form>
+
+</div>

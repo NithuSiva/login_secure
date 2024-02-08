@@ -1,0 +1,23 @@
+body{
+    width: 100%;
+    height: 100%;
+}
+
+
+.formulaire{
+    text-align: center;
+    margin-top: 10%;
+}
+.formulaire_titre{}
+.identifiant{}
+.p_identifiant{}
+.mdp{}
+.p_mdp{}
+
+.boutton_div{
+    margin-top: 20px;
+}
+
+.boutton_reset{}
+.boutton_valider{}
+.boutton_ajout{}
