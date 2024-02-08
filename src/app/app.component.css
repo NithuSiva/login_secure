@@ -3,7 +3,10 @@ body{
     height: 100%;
 }
 
-
+.logo{
+    width: 250px;
+    height: auto;
+}
 .formulaire{
     text-align: center;
     margin-top: 10%;
