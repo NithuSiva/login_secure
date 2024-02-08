@@ -1,27 +1,55 @@
-# Formulaire
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.3.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+Réalisation d'une page de login sécurisé avec le framework Angular.
 
-## Code scaffolding
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+# Lancer le code
+- Installer Node.JS ( version : v18.18.2 ) et npm ( version : 9.8.1 ) :
+  : -  node --version
+  : - npm --version
+- Installer Angular Cli : 
+  : - npm install - g @angular/cli 
+- Cloné ou Téléchargé le zip et le dézippé dans un dossier.
+- Ouvrez un terminal dans le dossier du projet et lancé : 
+  : - npm install
+- Ensuite, nous allons lancer l'application ( vous trouverez un lien localhost dans le terminal)  avec  :
+  : - ng serve
+- Et enfin dans un second terminal dans le même répertoire, nous allons lancer le serveur JSON :
+  : - npm run server
 
-## Build
+# Base de données
+J'ai utilisé un JSON pour ma base de données, la base est vide.
+# Fonctionnement
+La page est constitué de deux champs de texte "Identifiant" et "Mots de passe" et trois bouttons.
+- Le premier bouton permet de remettre à zéro les deux champs de texte.
+- Le second bouton permet de se connecter (Lance une alerte lorsque le login a fonctionné sinon une erreur).
+- Le troisième bouton permet d'ajouter l'identifiant et le mot de passe à la base de données.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+# Sécurité
+J'ai d'abord ajouté un regex pour les "mots de passe" afin d'avoir un mdp robuste.
 
-## Running unit tests
+Regex 
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+```typescript
+let  mdpStrongRegex = new RegExp("^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,})");
+let  mdpMediumRegex =  new RegExp("^(((?=.*[a-z])(?=.*[A-Z]))|((?=.*[a-z])(?=.*[0-9]))|((?=.*[A-Z])(?=.*[0-9])))(?=.{6,})");
+```
 
-## Running end-to-end tests
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Il est possible d'acceder a la base de données lorsque le serveur est lancé avec l'URL : http://localhost:3000/users
 
-## Further help
+Ainsi, les identifiants et mots de passe sont chiffrés puis ajoutés à la base de données, ce qui rend les identifiants et mots de passe inexploitable.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Chiffrement
+```typescript
+let  user = { 'id':  id,  'mdp':  mdp};
+let  dataEncrypt = { 'user' : this.CryptoJS.AES.encrypt(JSON.stringify(user),  clé).toString()};
+```
+Déchiffrement
+```typescript
+let  bytes = this.CryptoJS.AES.decrypt(user.user,  clé);
+let  decryptedData = JSON.parse(bytes.toString(this.CryptoJS.enc.Utf8));
+```
+
+
